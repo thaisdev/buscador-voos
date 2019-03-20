@@ -1,4 +1,4 @@
-##Orientações para rodar o projeto
+**Orientações para rodar o projeto**
 
 1. Certifique-se de ter instalado o Node a partir da versão 8.9 (https://nodejs.org/en/download/).
 2. Certifique-se de ter instalado o Angular CLI a partir da versão 6.0.3 via linha de comando (https://cli.angular.io/):
