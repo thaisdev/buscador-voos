@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-12">
+      <nb-card>
+          <nb-card-header>Busca</nb-card-header>
+
+          <nb-card-body>
+            <form novalidate [formGroup]="formBusca" (ngSubmit)="buscar()">
+              <div class="row">
+                <div class="form-group col-4">
+                  <label for="aeroportoOrigem">Aeroporto de Origem</label>
+                  <select class="form-control" name="aeroportoOrigem" formControlName="aeroportoOrigem">
+                    <option *ngFor="let opcao of aeroportos" [value]="opcao.aeroporto">{{opcao.nome}}</option>
+                  </select>
+                  <span class="input-error-msg" *ngIf="formBusca.controls.aeroportoOrigem.value && formBusca.controls.aeroportoOrigem.invalid">Campo inválido</span>
+                </div>
+              
+                <div class="form-group col-4">
+                  <label for="aeroportoDestino">Aeroporto de Destino</label>
+                  <select class="form-control" name="aeroportoDestino" formControlName="aeroportoDestino">
+                    <option *ngFor="let opcao of aeroportos" [value]="opcao.aeroporto">{{opcao.nome}}</option>
+                  </select>
+                  <span class="input-error-msg" *ngIf="formBusca.controls.aeroportoDestino.value && formBusca.controls.aeroportoDestino.invalid">Campo inválido</span>
+                </div>
+
+                <div class="form-group col-4">
+                  <label for="dataSaida">Data de Saída</label>
+                  <input class="form-control" [nbDatepicker]="datepicker" name="dataSaida" formControlName="dataSaida">
+                  <nb-datepicker #datepicker></nb-datepicker>
+                  <span class="input-error-msg" *ngIf="formBusca.controls.dataSaida.value && formBusca.controls.dataSaida.invalid">Campo inválido</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary pull-right" [disabled]="formBusca.invalid || loading">
+                {{loading ? 'Buscando...' : 'Buscar'}}
+              </button>
+            </form>
+          </nb-card-body>
+      </nb-card>
+
+      <nb-card>
+        <nb-card-header>Resultados</nb-card-header>
+
+        <nb-card-body>
+            <ng2-smart-table [settings]="settings" [source]="sourceVoos" (custom)="verVoos($event)"></ng2-smart-table>
+        </nb-card-body>
+      </nb-card>
+  </div>
+</div>
+  

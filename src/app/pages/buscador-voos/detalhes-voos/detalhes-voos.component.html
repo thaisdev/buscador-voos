@@ -1,0 +1,9 @@
+<nb-card>
+  <nb-card-header>Detalhes dos voos escalados</nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="sourceVoosEscalados"></ng2-smart-table>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton class="pull-right" (click)="close()">Fechar</button>
+  </nb-card-footer>
+</nb-card>
